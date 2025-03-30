@@ -19,10 +19,9 @@ import pygame
 # ASCII characters 
 ASCII_CHARS = '  .:-=+*#%@' # ascii_chars 
 # Other ASCII char (alternative)
-    # '  .:-=+*#%@' ascii_char for Bad Apple!! feat.SEKAI (SEKAI version)
-    # ' $8obdpq0L@n1+"`' ascii_char for Bad Apple!!  
-    # ' .:-=+*#%@' ascii_char for Bad Apple!!  (alternative)
-    # ' @#S%?*+;:,.' ascii_char from "https://www.youtube.com/watch?v=AZfrXrk3ZHc&ab_channel=HexagonII"
+    # '  .:-=+*#%@' for Bad Apple!! feat.SEKAI (SEKAI version)
+    # ' $8obdpq0L@n1+"`' for Bad Apple!!  (Original version)
+    # ' @#S%?*+;:,.' alternative
 
 # Video path for capture
 video_path = "SEKAI_Bad_apple!!.mp4" # change mp4 file path for different versions of Bad Apple!!
