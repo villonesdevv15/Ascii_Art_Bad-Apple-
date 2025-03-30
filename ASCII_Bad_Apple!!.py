@@ -1,9 +1,4 @@
-# README.md
-# The content used in these videos is intended for educational and informational purposes only. 
-# All rights to the images, music, clips, and other materials belong to their respective owners. 
-# I do not claim ownership over any third-party content used.
-
-# Youtube URL for Bad Apple!! and Sekai Version
+# Original Sources:
 # https://www.youtube.com/watch?v=FtutLA63Cp8&ab_【東方】Bad Apple!! ＰＶ【影絵】
 # https://www.youtube.com/watch?v=v-fc1zv31zE&ab_ Bad Apple!! feat.SEKAI / 25時、ナイトコードで。 × 初音ミク
 
@@ -20,26 +15,17 @@ import pygame
 ASCII_CHARS = '  .:-=+*#%@' # ascii_chars 
 # Other ASCII char (alternative)
     # '  .:-=+*#%@' for Bad Apple!! feat.SEKAI (SEKAI version)
-    # ' $8obdpq0L@n1+"`' for Bad Apple!!  (Original version)
+    # ' $8obdpq0L@n1+"`' for Bad Apple!! (Original version)
     # ' @#S%?*+;:,.' alternative
 
 # Video path for capture
 video_path = "SEKAI_Bad_apple!!.mp4" # change mp4 file path for different versions of Bad Apple!!
 audio_path = "SEKAI_Bad_apple!!.mp3" # change mp3 file path for different versions of Bad Apple!!
-# Example
-    # Original Version
-        # video_path = "Bad_Apple!!.mp4"
-        # audio_path = "Bad_Apple!!.mp3" 
-        # for the original
-    # SEKAI Version
-        # video_path = "SEKAI_Bad_Apple!!.mp4"
-        # audio_path = "SEKAI_Bad_Apple!!.mp3"  
-# Don't forget to change Ascii's Character on every version
 
 cap = cv2.VideoCapture(video_path)
 
 # Output width
-OUTPUT_WIDTH = 150  # terminal size (make sure to scroll the terminal all the way to the top for full view 
+OUTPUT_WIDTH = 150  # terminal size (make sure to scroll the terminal to the top for full view 
                                     # or else you can't see the whole thing)
 fps = cap.get(cv2.CAP_PROP_FPS) 
 frame_time = 1 / fps  # Time per frame 
@@ -91,21 +77,3 @@ while cap.isOpened():
 # Cleanup
 cap.release()
 pygame.mixer.music.stop()
-
-# !READ THIS BEFORE RUNNING!
-# - If the program isn't running
-# - Make sure to download all of the Python package 
-
-# How to install python package
-# Click new Terminal or Ctrl+Shift+`
-# Paste: pip install opencv-python numpy pygame
-
-# If you want to install all necessary packages at once, 
-# you can create a requirements.txt file with the following content:
-
-# opencv-python
-# numpy
-# pygame
-
-# Then install all packages using:
-# pip install -r requirements.txt
