@@ -8,8 +8,8 @@ import pygame
 # ASCII characters 
 ASCII_CHARS = '  .:-=+*#%@' # ASCII_CHARS
 # Other ASCII char for every VERSION
-    # '  .:-=+*#%@' ascii_char for Bad Apple!! feat.SEKAI (SEKAI version)
-    # ' $8obdpq0L@n1+"`' ascii_char for Bad Apple!! 
+    # '  .:-=+*#%@' for Bad Apple!! feat.SEKAI (SEKAI Version)
+    # ' $8obdpq0L@n1+"`' for Bad Apple!! (Original Version
 
 video_path = "SEKAI_Bad_apple!!.mp4"
 audio_path = "SEKAI_Bad_apple!!.mp3"
