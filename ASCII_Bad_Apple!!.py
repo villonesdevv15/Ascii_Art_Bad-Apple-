@@ -4,7 +4,6 @@
 
 # Ascii art for both Bad Apple!! and Bad Apple!! (SEKAI version)
 
-# My favorite project of all time
 import cv2
 import numpy as np
 import time
