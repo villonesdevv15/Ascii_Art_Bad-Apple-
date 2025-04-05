@@ -14,7 +14,7 @@ import pygame
 # ASCII characters 
 ASCII_CHARS = '  .:-=+*#%@' # ascii_chars 
 # Other ASCII char (alternative)
-    # '  .:-=+*#%@' for Bad Apple!! feat.SEKAI (SEKAI version)
+    # '  .,:;+*&%@#$' for Bad Apple!! feat.SEKAI (SEKAI version)
     # ' $8obdpq0L@n1+"`' for Bad Apple!! (Original version)
     # ' @#S%?*+;:,.' alternative
 
