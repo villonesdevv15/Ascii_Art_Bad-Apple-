@@ -4,6 +4,7 @@
 
 # Ascii art for both Bad Apple!! and Bad Apple!! (SEKAI version)
 
+# My favorite project of all time
 import cv2
 import numpy as np
 import time
@@ -11,21 +12,21 @@ import os
 import pygame
 
 # ASCII characters 
-ASCII_CHARS = '  .:-=+*#%@' # ascii_chars 
+ASCII_CHARS = ' $8obdpq0L@n1+"`' # ascii_chars 
 # Other ASCII char (alternative)
     # '  .,:;+*&%@#$' for Bad Apple!! feat.SEKAI (SEKAI version)
     # ' $8obdpq0L@n1+"`' for Bad Apple!! (Original version)
     # ' @#S%?*+;:,.' alternative
 
 # Video path for capture
-video_path = "SEKAI_Bad_apple!!.mp4" # change mp4 file path for different versions of Bad Apple!!
-audio_path = "SEKAI_Bad_apple!!.mp3" # change mp3 file path for different versions of Bad Apple!!
+video_path = "Bad_apple!!.mp4" # change mp4 file path for different versions of Bad Apple!!
+audio_path = "Bad_apple!!.mp3" # change mp3 file path for different versions of Bad Apple!!
 
-cap = cv2.VideoCapture(video_path)
+cap = cv2.VideoCapture(video_path) # for mp4
 
 # Output width
 OUTPUT_WIDTH = 150  # terminal size (make sure to scroll the terminal to the top for full view 
-                                    # or else you can't see the whole thing)
+                                    # or else you can't see the whole thing) or (zoom in on Visual Studio Community)
 fps = cap.get(cv2.CAP_PROP_FPS) 
 frame_time = 1 / fps  # Time per frame 
 
@@ -34,7 +35,7 @@ pygame.mixer.init()
 pygame.mixer.music.load(audio_path)
 
 # Function to convert the frame to ASCII 
-def frame_to_ascii(frame, width=OUTPUT_WIDTH):
+def bad_apple_frame_to_ascii(frame, width=OUTPUT_WIDTH):
     height, orig_width = frame.shape
     aspect_ratio = orig_width / height
     new_height = int(width / aspect_ratio * 0.5)  # height scaling
@@ -55,12 +56,12 @@ while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
         break  # Video ends 
-                # If complete scroll down the terminal
+        # If complete scroll down the terminal | for Visual Studio Community close down the terminal 
     # Convert frame to grayscale (hahaha)
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Convert to ASCII
-    ascii_art = frame_to_ascii(gray_frame)
+    ascii_art = bad_apple_frame_to_ascii(gray_frame)
 
     # Clear screen and print ASCII frame 
     # If the screen flashes abnormally make adjustments
@@ -73,6 +74,6 @@ while cap.isOpened():
     sleep_time = max(0, expected_time - time.time())  # no negative 
     time.sleep(sleep_time)
 
-# Cleanup
+# Finishes after the video ends
 cap.release()
 pygame.mixer.music.stop()
