@@ -55,7 +55,7 @@ frame_count = 0
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
-        break  # Video ends 
+        break  
         # If complete scroll down the terminal | for Visual Studio Community close down the terminal 
     # Convert frame to grayscale (hahaha)
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
