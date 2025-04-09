@@ -33,6 +33,7 @@ frame_time = 1 / fps  # Time per frame
 # audio using pygame
 pygame.mixer.init()
 pygame.mixer.music.load(audio_path)
+pygame.mixer.music.set_volume(1)  # Adjust accordingly (0.0 to 1.0)
 
 # Function to convert the frame to ASCII 
 def bad_apple_frame_to_ascii(frame, width=OUTPUT_WIDTH):
