@@ -1,5 +1,5 @@
 # Original Sources:
-# https://www.youtube.com/watch?v=FtutLA63Cp8&ab_ Bad Apple!! Original Version
+# https://www.youtube.com/watch?v=v-fc1zv31zE&ab_ Bad Apple!! feat.SEKAI 
 # Exact replica for Bad Apple!! Original Version
 # Duh it's pain in the ass having to change the mp3 and mp4 and the ascii characters
 
