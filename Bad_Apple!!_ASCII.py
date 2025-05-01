@@ -23,7 +23,7 @@ cap = cv2.VideoCapture(video_path) # for mp4
 # Output width
 OUTPUT_WIDTH = 155  # terminal size (make sure to scroll the terminal to the top for full view 
                                     # or else you can't see the whole thing) or (zoom in on Visual Studio Community)
-fps = cap.get(cv2.CAP_PROP_FPS) 
+fps = 30 # Adjust temporarily if the fps doesn't sync the video replace this on fps | fps = cap.get(cv2.CAP_PROP_FPS)  
 frame_time = 1 / fps  # Time per frame 
 
 # audio using pygame
