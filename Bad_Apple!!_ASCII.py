@@ -1,11 +1,13 @@
 # Original Sources:
 # https://www.youtube.com/watch?v=FtutLA63Cp8&ab_【東方】Bad Apple!! ＰＶ【影絵】
+# Run using the run_apple.py for smooth quality preventing frame delay
 
 import cv2
 import numpy as np
 import time
 import os
 import pygame
+import pyautogui
 
 # ASCII characters 
 ASCII_CHARS = ' $8obdpq0L@n1+"`' # ascii_chars 
@@ -21,9 +23,9 @@ audio_path = "Bad_apple!!.mp3" # change mp3 file path for different versions of 
 cap = cv2.VideoCapture(video_path) # for mp4
 
 # Output width
-OUTPUT_WIDTH = 155  # terminal size (make sure to scroll the terminal to the top for full view 
-                                    # or else you can't see the whole thing) or (zoom in on Visual Studio Community)
-fps = 30 # Adjust temporarily if the fps doesn't sync the video replace this on fps | fps = cap.get(cv2.CAP_PROP_FPS)  
+OUTPUT_WIDTH = 155 # terminal size make sure to scroll the terminal to the top for full view
+             # set to 150 if running in VS Code 
+fps = 30 # Adjust temporarily if the fps doesn't sync the video copy this on fps | fps = cap.get(cv2.CAP_PROP_FPS) 
 frame_time = 1 / fps  # Time per frame 
 
 # audio using pygame
@@ -74,3 +76,4 @@ while cap.isOpened():
 # Finishes after the video ends
 cap.release()
 pygame.mixer.music.stop()
+pyautogui.hotkey("f11")
