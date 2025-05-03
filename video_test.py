@@ -1,33 +1,52 @@
+# test video for comparison
 import cv2
 import pygame
-video_path = "Bad_Apple!!.mp4"  # video path
-audio_path = "Bad_Apple!!.mp3"  # audio path
+import time
+
+video_path = "Bad_Apple!!.mp4"
+audio_path = "Bad_Apple!!.mp3"
+
+# Initialize video capture
 cap = cv2.VideoCapture(video_path)
-
-# I forgot how to sync in
-# audio using pygame
-# pygame.mixer.init()
-# pygame.mixer.music.load(audio_path)
-# pygame.mixer.music.set_volume(1)  # Adjust accordingly (0.0 to 1.0)
-
-# pygame.mixer.music.play()
-# Start audio (to sync in with the video) using pygame
 if not cap.isOpened():
-    print("Could not open the video :( ")
+    print("Could not open the video :(")
     exit()
 
+# Get video properties for sync
+fps = 30
+frame_delay = 1.0 / fps
+
+# Initialize audio
+pygame.mixer.init()
+pygame.mixer.music.load(audio_path)
+pygame.mixer.music.set_volume(1.0)
+
+# Start both at the same time
+audio_start_time = time.time() + 0.2  # Small delay to account for initialization
+pygame.mixer.music.play(start=0.0)
+video_start_time = audio_start_time
+
 while True:
+    # Calculate proper frame display time
+    current_time = time.time()
+    expected_frame_time = (current_time - video_start_time)
+    
     ret, frame = cap.read()
     if not ret:
-        cap.set(cv2.CAP_PROP_POS_FRAMES, 0) # Reset to the first frame
-        ret, frame = cap.read() # Read the first frame again
-        if not ret:
-            break  # Exit if reading fails even after reset
-
+        break
+    
+    # Show frame
     cv2.imshow("Bad Apple!!", frame)
-
-    if cv2.waitKey(25) & 0xFF == ord('q'): # Exit if 'q' is pressed
+    
+    # Calculate the time to wait for the next frame
+    frame_pos = cap.get(cv2.CAP_PROP_POS_FRAMES)
+    target_time = video_start_time + (frame_pos / fps)
+    wait_time = max(1, int((target_time - time.time()) * 1000))
+    
+    # Exit on the '/' key or window close
+    if cv2.waitKey(wait_time) & 0xFF == ord('/') or cv2.getWindowProperty("Bad Apple!!", cv2.WND_PROP_VISIBLE) < 1:
         break
 
+pygame.mixer.music.stop()
 cap.release()
 cv2.destroyAllWindows()
