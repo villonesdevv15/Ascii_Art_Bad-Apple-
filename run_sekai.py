@@ -1,17 +1,19 @@
-# Run a program through cmd to prevent frame delay
-# sekai version
+# cmd running test
+# SEKAI version
 import os
 import time
-import pyautogui 
+import pyautogui  
 
-def run_sekai():
+def run_bad_apple():
     time.sleep(0.5)
-    os.system("start cmd /k cd C:\\Users\\villo\\OneDrive\\Desktop\\ASCII Art Program") #C:\\User\Name\\Location\\Document\Folder
+    # Updated path for your new folder structure
+    os.system("start cmd /k cd C:\\Users\\loren\\OneDrive\\Desktop\\Python\\ASCII Art Program")
     time.sleep(1)
-    pyautogui.write("python SEKAI_VER_Bad_Apple!!.py", interval=0.1) # run better without after frames
-    pyautogui.press("enter") # executing
+    # Renamed file to avoid issues with '!!'
+    pyautogui.write("python SEKAI_VER_Bad_Apple.py", interval=0.1)
+    pyautogui.press("enter")
     time.sleep(0.5)
     pyautogui.hotkey("f11")  # Fullscreen
 
 if __name__ == "__main__":
-    run_sekai()
+    run_bad_apple()
