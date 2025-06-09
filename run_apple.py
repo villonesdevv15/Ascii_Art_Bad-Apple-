@@ -1,15 +1,17 @@
 # cmd running test
-# original version
+# SEKAI version
 import os
 import time
 import pyautogui  
 
 def run_bad_apple():
     time.sleep(0.5)
-    os.system("start cmd /k cd C:\\Users\\villo\\OneDrive\\Desktop\\ASCII Art Program")  #C:\\User\Name\\Location\\Document\Folder
+    # Updated path for your new folder structure
+    os.system("start cmd /k cd C:\\Users\\loren\\OneDrive\\Desktop\\Python\\ASCII Art Program")
     time.sleep(1)
-    pyautogui.write("python Bad_Apple!!_ASCII.py", interval=0.1) # run better without after frames
-    pyautogui.press("enter") # executing
+    # Renamed file to avoid issues with '!!'
+    pyautogui.write("python Bad_Apple_ASCII.py", interval=0.1)
+    pyautogui.press("enter")
     time.sleep(0.5)
     pyautogui.hotkey("f11")  # Fullscreen
 
