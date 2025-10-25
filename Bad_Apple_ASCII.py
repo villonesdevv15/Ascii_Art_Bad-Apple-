@@ -8,6 +8,7 @@ import time
 import os
 import pygame
 import pyautogui
+import sys
 
 # ASCII characters 
 ASCII_CHARS = ' $8obdpq0L@n1+"`' # ascii_chars 
@@ -31,10 +32,10 @@ frame_time = 1 / fps  # Time per frame
 # audio using pygame
 pygame.mixer.init()
 pygame.mixer.music.load(audio_path)
-pygame.mixer.music.set_volume(1)  # Adjust accordingly (0.0 to 1.0)
+pygame.mixer.music.set_volume(0.5)  # Adjust accordingly (0.0 to 1.0)
 
 # Function to convert the frame to ASCII 
-def bad_apple_frame_to_ascii(frame, width=OUTPUT_WIDTH):
+def video_to_ascii(frame, width=OUTPUT_WIDTH):
     height, orig_width = frame.shape
     aspect_ratio = orig_width / height
     new_height = int(width / aspect_ratio * 0.5)  # height scaling
@@ -46,11 +47,15 @@ def bad_apple_frame_to_ascii(frame, width=OUTPUT_WIDTH):
     )
     return ascii_frame
 
+# Hide cursor for a cleaner effect
+print("\033[?25l", end="")
+
 # Start audio (to sync in with the video) using pygame
 pygame.mixer.music.play()
-start_time = time.time()  # time tracking (making sure every frame counts)
+start_time = time.time()  # time tracking
 
 frame_count = 0
+first_frame = True
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
@@ -60,20 +65,29 @@ while cap.isOpened():
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Convert to ASCII
-    ascii_art = bad_apple_frame_to_ascii(gray_frame)
+    ascii_art = video_to_ascii(gray_frame)
 
     # Clear screen and print ASCII frame 
     # If the screen flashes abnormally make adjustments
-    os.system("cls" if os.name == "nt" else "clear")  # Windows: cls
-    print(ascii_art)
+    if not first_frame:
+        sys.stdout.write("\033[H")  # move cursor to top (no flicker)
+    else:
+        first_frame = False
+
+    sys.stdout.write(ascii_art)
+    sys.stdout.flush()
 
     # Sync with audio
     frame_count += 1
     expected_time = start_time + (frame_count * frame_time)
-    sleep_time = max(0, expected_time - time.time())  # no negative 
+    sleep_time = max(0, expected_time - time.time())
     time.sleep(sleep_time)
 
 # Finishes after the video ends
 cap.release()
 pygame.mixer.music.stop()
+
+# Restore cursor visibility
+print("\033[?25h", end="")
+
 pyautogui.hotkey("f11")
